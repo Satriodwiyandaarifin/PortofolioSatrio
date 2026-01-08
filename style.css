@@ -826,3 +826,101 @@ body {
 @media (max-width: 768px) {
     .modal-grid { grid-template-columns: 1fr; }
 }
+/* =========================================
+   TAMBAHAN KHUSUS RESPONSIVE HP (AUTO FIX)
+   ========================================= */
+
+@media (max-width: 992px) {
+    /* Navbar jadi lebih fleksibel */
+    .navbar {
+        padding: 15px 5%;
+    }
+    .navbar ul {
+        gap: 15px;
+    }
+
+    /* Hero & About: Dari samping-sampingan jadi atas-bawah */
+    .hero-card, .about-content, .contact-wrapper, .modal-grid {
+        flex-direction: column !important;
+        display: flex !important;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .hero-right, .hero-left, .about-text {
+        width: 100%;
+    }
+
+    /* Agar gambar hero tidak terlalu besar di HP */
+    .hero-img {
+        max-width: 300px;
+        margin-top: 20px;
+    }
+
+    /* Info Grid (About Me) jadi 1 kolom di HP */
+    .info-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Grid Project & Sertifikat jadi 2 kolom dulu */
+    .project-grid, .certificate-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px;
+    }
+
+    /* Tech stack jadi 3 kolom */
+    .tech-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Navbar teks dikecilkan sedikit */
+    .navbar ul li a {
+        font-size: 14px;
+    }
+
+    /* Semua Grid dipaksa jadi 1 kolom saja di HP kecil */
+    .project-grid, .certificate-grid, .tech-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Tab Button (Project, Sertifikat, Tech) */
+    .tab-box {
+        width: 95%;
+        justify-content: center;
+    }
+    .tab-btn {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+
+    /* Avatar About Me dikecilkan ukurannya agar tidak potong */
+    .about-avatar {
+        flex: 0 0 220px;
+        width: 220px;
+        height: 220px;
+    }
+
+    /* Modal Project di HP */
+    .modal-content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    
+    .modal-stats {
+        flex-direction: column;
+    }
+
+    /* Form Kontak */
+    .contact-form-card {
+        padding: 20px;
+    }
+}
+
+/* Fix tambahan agar gambar tidak keluar layar */
+img {
+    max-width: 100%;
+    height: auto;
+}
