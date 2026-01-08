@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Satrio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="splash-screen">
+    <div class="splash-content">
+        <h1 class="splash-logo">My Portofolio</h1>
+        <div class="loading-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar">
+    <div class="logo">Satrio</div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#project">Project</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+    </ul>
+</nav>
+
+<section id="home" class="hero">
+    <h1 class="hello">hello Friends</h1>
+    <div class="hero-card">
+        <div class="hero-left">
+            <h2 class="hero-title">i am <span>Satrio Dwi Yanda Arifin</span></h2>
+            <h3 class="hero-subtitle">UI/UX Enthusiast | Frontend Developer</h3>
+            <p class="hero-desc"> Saya Satrio Dwi Yanda Arifin, seorang mahasiswa Informatika di Universitas Telkom Surabaya.
+                 dengan minat yang kuat dalam Desain UI/UX dan Pengembangan Frontend. 
+                 Saya senang menciptakan pengalaman digital yang bersih dan ramah pengguna serta mengembangkan antarmuka yang intuitif untuk platform web dan mobile. 
+                 Saya memiliki pengalaman menggunakan Figma untuk wireframing, prototyping, dan desain visual, bersama dengan keterampilan pengembangan frontend dalam HTML, CSS, dan JavaScript. </p>
+            <div class="btn-group">
+                <a href="https://www.linkedin.com/in/satrio-dwi-yanda-arifin-a465aa392/" target="_blank" class="btn-primary">MyLinkedin</a>
+                <a href="images/cvrio.pdf" download class="btn-outline">MyCv</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="images/heroo.png" alt="Hero Illustration" class="hero-img">
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <h2 class="section-title">ABOUT ME</h2>
+    <div class="about-content">
+        <div class="about-avatar">
+            <img src="images/rio.jpeg" alt="Profile" class="avatar-img">
+        </div>
+        <div class="about-text">
+            <h3>HELLO !</h3>
+            <p>Saya adalah mahasiswa Informatika yang memiliki minat pada UI/UX Design, Frontend Development, dan Graphic Design. 
+                Saya senang merancang antarmuka yang menarik, fungsional, dan berfokus pada pengalaman pengguna. 
+                Dengan semangat belajar yang tinggi, saya terus mengasah kemampuan desain dan pemrograman untuk menciptakan produk digital yang responsif, modern, dan mudah digunakan. Saya Juga Merupakan Staff Aktif Di Himpunan Mahasiswa Informatika Telkom University Surabaya sebagai Staff EKWU Pada Periode 2025-2026.</p>
+            <div class="info-grid">
+                <div class="info">Name<br><span>Satrio Dwi Yanda Arifin</span></div>
+                <div class="info">College<br><span>Telkom University Surabaya</span></div>
+                <div class="info">Status<br><span>Mahasiswa</span></div>
+                <div class="info">Residence<br><span>Surabaya, Indonesia</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="project" class="portfolio">
+    <h2>My Portfolio</h2>
+    <div class="tab-container">
+        <div class="tab-box">
+            <div class="tab-glider"></div>
+            <button class="tab-btn active" data-tab="project">Project</button>
+            <button class="tab-btn" data-tab="sertifikat">Sertifikat</button>
+            <button class="tab-btn" data-tab="tech">Tech stack</button>
+        </div>
+    </div>
+
+    <div class="portfolio-content">
+        <div id="project-content" class="tab-panel active">
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="card-img" style="background-color: #ff0055;"><img src="images/myporto.png" alt="porto"></div>
+                    <div class="card-body">
+                        <h4>MyPortofolio</h4>
+                        <p>Website Portofolio pribadi tentang diri saya sendiri.</p>
+                        <a href="#" class="btn-details">Details <span>&rarr;</span></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="card-img" style="background-color: #ffffff;"><img src="images/navigasi.png" alt="navigasi"></div>
+                    <div class="card-body">
+                        <h4>Navigasi_Kampus</h4>
+                        <p>Website untuk membantu Mahasiswa Baru menemukan ruangan.</p>
+                        <a href="#" class="btn-details">Details <span>&rarr;</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="project-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-grid">
+            <div class="modal-left">
+                <h2 id="modal-title">Project Name</h2>
+                <p id="modal-desc">Description goes here...</p>
+                <div class="modal-stats">
+                    <div class="m-stat"><span id="modal-tech-count">0</span><br>Total Teknologi</div>
+                    <div class="m-stat"><span id="modal-feature-count">0</span><br>Fitur Utama</div>
+                </div>
+                <div class="modal-btns">
+                    <a href="#" class="btn-live">Live Demo</a>
+                    <a href="#" class="btn-git">Github</a>
+                </div>
+                <h3>Key Features</h3>
+                <ul id="modal-features-list"></ul>
+            </div>
+            <div class="modal-right">
+                <img id="modal-img" src="" alt="Project Preview">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="sertifikat-content" class="tab-panel">
+    <div class="certificate-grid">
+        
+        <div class="cert-card">
+            <div class="cert-img-container">
+                <img src="images/sertif2.png" class="cert-img" alt="Humas">
+            </div>
+            <div class="cert-info">
+                <h4>Humas</h4>
+                <p style="color: #ff0000; font-weight: 700;">Panitia Chromatics Batch 1</p>
+            </div>
+        </div>
+
+        <div class="cert-card">
+            <div class="cert-img-container">
+                <img src="images/setif1.jpg" class="cert-img" alt="Acara">
+            </div>
+            <div class="cert-info">
+                <h4>Acara</h4>
+                <p style="color: #ff0000; font-weight: 700;">Panitia Informatics Care</p>
+            </div>
+        </div>
+
+        <div class="cert-card">
+            <div class="cert-img-container">
+                <img src="images/sertif3.jpg" class="cert-img" alt="Ketua">
+            </div>
+            <div class="cert-info">
+                <h4>Ketua Pelaksana</h4>
+                <p style="color: #ff0000; font-weight: 700;">Workshirt Competition</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+        <div id="tech-content" class="tab-panel">
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></div>
+                    <span>HTML5</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></div>
+                    <span>CSS3</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"></div>
+                    <span>JavaScript</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"></div>
+                    <span>Figma</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Github"></div>
+                    <span>GitHub</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon"><img src="https://www.vectorlogo.zone/logos/kaggle/kaggle-icon.svg" alt="Kaggle"></div>
+                    <span>Kaggle</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact" class="contact">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h2 class="section-title" style="text-align: center;">Get in Touch</h2>
+        
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3 class="contact-subtitle">Let's Talk!</h3>
+                <p class="contact-desc">
+                    Punya pertanyaan, tawaran kerja, atau sekadar menyapa? Silakan hubungi saya lewat formulir atau info kontak berikut:
+                </p>
+                
+                <div class="info-list">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="info-text">
+                            <p>satriodwi22311@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-text">
+                            <p>Surabaya, Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-connect">
+                    <h4>Connect With Me</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/Satriodwiyandaarifin" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/satrio-dwi-yanda-arifin-a465aa392/" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/satriodya_/" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div> <div class="contact-form-card">
+                <form action="https://formspree.io/f/mbdlwwyv" method="POST" id="contactForm">
+                    <div class="form-group">
+                        <label>Nama Kami</label>
+                        <input type="text" name="name" placeholder="Nama lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Kamu</label>
+                        <input type="email" name="email" placeholder="Email aktif" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Pesan</label>
+                        <textarea name="message" rows="4" placeholder="Pesan Anda..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-send">
+                        Kirim Pesan <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div> </div> </div> </section>
+<div id="fullscreen-overlay" class="fullscreen-preview" onclick="closeFullImage()">
+    <span class="close-preview">&times;</span>
+    <img id="img-preview" src="" alt="Full View">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
