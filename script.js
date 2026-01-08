@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
+
 // 1. DATA PROJECT
 const projectData = {
     "myportofolio": {
@@ -7,7 +8,7 @@ const projectData = {
         techCount: 5,
         img: "images/myporto.png",
         features: ["Desain Responsif", "Animasi GSAP", "Dark Mode Ready", "Form Contact Active"],
-        githubLink: "https://github.com/Satriodwiyandaarifin/Portofolio_Satrio.git" // <--- GANTI LINK INI
+        githubLink: "https://github.com/Satriodwiyandaarifin/PortofolioSatrio.git"
     },
     "navigasi-kampus": {
         title: "Navigasi Kampus",
@@ -15,9 +16,10 @@ const projectData = {
         techCount: 7,
         img: "images/navigasi.png",
         features: ["Map Interaktif", "Search Filter", "Informasi Gedung", "Real-time Location"],
-        githubLink: "https://github.com/username/repo-navigasi" // <--- GANTI LINK INI
+        githubLink: "https://github.com/username/repo-navigasi"
     }
 };
+
 // 2. INITIALIZATION & ANIMATION
 document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "hidden";
@@ -51,15 +53,17 @@ document.addEventListener("DOMContentLoaded", () => {
         y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
     });
 });
-// 3. FUNGSI MODAL
+
+// 3. FUNGSI MODAL (FIXED LOGIC)
 const modal = document.getElementById("project-modal");
 
 function openModal(titleText) {
-    // Membersihkan teks: ubah ke kecil, hapus spasi/underscore
-    const key = titleText.toLowerCase().trim().replace(/[^a-z0-match]/g, '');
+    // Membersihkan teks: Ubah ke kecil, ganti spasi atau underscore (_) menjadi tanda hubung (-)
+    // Agar "Navigasi_Kampus" atau "Navigasi Kampus" menjadi "navigasi-kampus"
+    const key = titleText.toLowerCase().trim().replace(/[\s_]+/g, '-');
     
-    // Kita cari data yang paling mendekati
-    const data = projectData[key] || projectData["myportofolio"]; 
+    // Cari data berdasarkan key
+    const data = projectData[key]; 
     
     if (data) {
         document.getElementById("modal-title").innerText = data.title;
@@ -67,13 +71,11 @@ function openModal(titleText) {
         document.getElementById("modal-img").src = data.img;
         document.getElementById("modal-tech-count").innerText = data.techCount;
         
-        // --- LOGIKA LINK GITHUB DISINI ---
         const githubBtn = document.querySelector(".btn-git");
         if (githubBtn && data.githubLink) {
             githubBtn.href = data.githubLink;
-            githubBtn.target = "_blank"; // Supaya buka tab baru
+            githubBtn.target = "_blank";
         }
-        // ---------------------------------
 
         const featureCountEl = document.getElementById("modal-feature-count");
         if(featureCountEl) featureCountEl.innerText = data.features.length;
@@ -93,8 +95,12 @@ function openModal(titleText) {
             { scale: 0.8, opacity: 0 }, 
             { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }
         );
+    } else {
+        // Jika tidak ketemu, default ke myportofolio tanpa merusak judul yang dicari
+        openModal("myportofolio");
     }
 }
+
 // 4. EVENT LISTENERS KLIK
 document.addEventListener("click", (e) => {
     if (e.target.closest(".btn-details")) {
@@ -132,7 +138,6 @@ tabBtns.forEach(btn => {
             if (p.id === target + "-content") p.classList.add("active");
         });
 
-        // Animasi Tech Stack
         if (target === "tech") {
             gsap.fromTo(".tech-item", 
                 { opacity: 0, y: 20, scale: 0.9 }, 
@@ -140,7 +145,6 @@ tabBtns.forEach(btn => {
             );
         }
 
-        // Animasi Sertifikat (DIPERBAIKI AGAR TIDAK BURAM)
         if (target === "sertifikat") {
             gsap.fromTo(".cert-card", 
                 { opacity: 0, y: 30 },
@@ -150,14 +154,14 @@ tabBtns.forEach(btn => {
                     stagger: 0.1, 
                     duration: 0.6, 
                     ease: "power2.out",
-                    clearProps: "all" // Penting: Menghapus filter/opacity sisa animasi
+                    clearProps: "all" 
                 }
             );
         }
     });
 });
 
-// 6. CONTACT ANIMATION & RESIZE
+// 6. CONTACT ANIMATION
 gsap.from(".contact-info", {
     scrollTrigger: { trigger: ".contact", start: "top 70%" },
     x: -50, opacity: 0, duration: 1, ease: "power3.out"
@@ -169,47 +173,27 @@ gsap.from(".contact-form-card", {
 });
 
 window.addEventListener("resize", updateGlider);
-// =========================================
-// 7. CERTIFICATE PREVIEW (BARU)
-// =========================================
 
-// Buat elemen preview secara otomatis jika belum ada di HTML
-if (!document.querySelector(".fullscreen-preview")) {
-    const previewHTML = `
-        <div class="fullscreen-preview" id="cert-preview-wrap">
-            <span class="close-preview">&times;</span>
-            <img id="img-preview" src="" alt="Sertifikat">
-        </div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', previewHTML);
-}
-
-const previewWrap = document.getElementById("cert-preview-wrap");
+// 7. CERTIFICATE PREVIEW (FIXED)
+const previewWrap = document.getElementById("cert-preview-wrap") || document.getElementById("fullscreen-overlay");
 const previewImg = document.getElementById("img-preview");
 
-// Daftarkan event klik untuk kartu sertifikat
 document.addEventListener("click", (e) => {
-    // Cari apakah yang diklik adalah bagian dari cert-card
     const certCard = e.target.closest(".cert-card");
     
     if (certCard) {
-        // Ambil source gambar dari dalam kartu yang diklik
         const imgSrc = certCard.querySelector(".cert-img").src;
-        
-        // Tampilkan Preview
-        previewImg.src = imgSrc;
-        previewWrap.style.display = "flex";
-        
-        // Animasi muncul agar halus
-        gsap.fromTo(previewImg, 
-            { scale: 0.5, opacity: 0 }, 
-            { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }
-        );
+        if (previewWrap && previewImg) {
+            previewImg.src = imgSrc;
+            previewWrap.style.display = "flex";
+            gsap.fromTo(previewImg, 
+                { scale: 0.5, opacity: 0 }, 
+                { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }
+            );
+        }
     }
 
-    // Tutup preview jika klik tombol close atau area hitam
     if (e.target.classList.contains("close-preview") || e.target === previewWrap) {
-        previewWrap.style.display = "none";
+        if(previewWrap) previewWrap.style.display = "none";
     }
-
 });
