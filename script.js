@@ -211,4 +211,5 @@ document.addEventListener("click", (e) => {
     if (e.target.classList.contains("close-preview") || e.target === previewWrap) {
         previewWrap.style.display = "none";
     }
+
 });
